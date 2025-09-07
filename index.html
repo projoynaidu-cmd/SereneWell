@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SereneWell – Find Your Balance</title>
+    <meta
+      name="description"
+      content="A modern wellness landing page: calm aesthetics, engaging interactions, and seamless navigation."
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      // Optional Tailwind config for font stack
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+              body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 10px 30px -12px rgba(0,0,0,0.15)",
+            },
+            colors: {
+              mint: "#B9E3C6",
+              leaf: "#7AB893",
+              lavender: "#D9D7F1",
+              sand: "#F5F1EA",
+              coral: "#FF8A80",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100 font-body"
+  >
+    <!-- ================ NAVBAR ================ -->
+    <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <!-- Logo -->
+          <a href="#" class="flex items-center gap-2 group">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-mint via-lavender to-leaf shadow-soft group-hover:scale-105 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-6 w-6 text-gray-800"
+              >
+                <path d="M12 2C8 5 6 8 6 11a6 6 0 1 0 12 0c0-3-2-6-6-9Z" />
+              </svg>
+            </span>
+            <span class="font-display text-xl font-semibold tracking-tight"
+              >Serene<span class="text-leaf">Well</span></span
+            >
+          </a>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden md:flex items-center gap-8">
+            <a href="#programs" class="hover:text-leaf">Programs</a>
+            <a href="#shop" class="hover:text-leaf">Shop</a>
+            <a href="#stories" class="hover:text-leaf">Stories</a>
+            <a href="#about" class="hover:text-leaf">About</a>
+            <a href="#contact" class="hover:text-leaf">Contact</a>
+          </nav>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-3">
+            <button
+              id="modeToggle"
+              aria-label="Toggle dark mode"
+              class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <svg
+                id="sunIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-5 w-5 hidden"
+              >
+                <path
+                  d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42ZM1 13h3v-2H1v2Zm10 10h2v-3h-2v3Zm9-10v-2h3v2h-3Zm-2.05-8.95-1.41 1.41 1.79 1.8 1.41-1.42-1.79-1.79ZM12 6a6 6 0 1 0 0 12A6 6 0 0 0 12 6Zm7.24 13.16-1.42 1.42 1.79 1.79 1.42-1.41-1.79-1.8ZM4.96 17.66l-1.79 1.8 1.41 1.41 1.8-1.79-1.42-1.42Z"
+                />
+              </svg>
+              <svg
+                id="moonIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-5 w-5"
+              >
+                <path d="M21.64 13A9 9 0 1 1 11 2.36 7 7 0 1 0 21.64 13Z" />
+              </svg>
+            </button>
+            <a
+              href="#book"
+              class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-leaf px-4 py-2 text-white shadow-soft hover:opacity-95"
+            >
+              <span>Book Now</span>
+            </a>
+            <!-- Mobile menu button -->
+            <button
+              id="menuBtn"
+              class="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
+              aria-label="Open menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="h-6 w-6"
+              >
+                <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Drawer -->
+      <div
+        id="mobileNav"
+        class="md:hidden max-h-0 overflow-hidden transition-all bg-white/90 dark:bg-gray-900/80 backdrop-blur border-t border-gray-100 dark:border-gray-800"
+      >
+        <div class="mx-auto max-w-7xl px-4 py-3 flex flex-col gap-2">
+          <a href="#programs" class="py-2">Programs</a>
+          <a href="#shop" class="py-2">Shop</a>
+          <a href="#stories" class="py-2">Stories</a>
+          <a href="#about" class="py-2">About</a>
+          <a href="#contact" class="py-2">Contact</a>
+          <a
+            href="#book"
+            class="mt-2 inline-flex items-center justify-center rounded-xl bg-leaf px-4 py-2 text-white"
+            >Book Now</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Spacer for fixed nav -->
+    <div class="h-20"></div>
+
+    <!-- ================ HERO ================ -->
+    <section class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 -z-10 bg-gradient-to-br from-mint via-white to-lavender dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+      ></div>
+
+      <div
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center"
+      >
+        <div class="reveal">
+          <div
+            class="inline-flex items-center gap-2 rounded-full bg-white/70 dark:bg-gray-900/50 px-3 py-1 ring-1 ring-gray-200 dark:ring-gray-800"
+          >
+            <span class="h-2 w-2 rounded-full bg-leaf"></span>
+            <span class="text-xs font-medium"
+              >Holistic wellness, personalized</span
+            >
+          </div>
+          <h1
+            class="mt-4 font-display text-4xl sm:text-5xl font-semibold leading-tight tracking-tight"
+          >
+            Find your <span class="text-leaf">balance</span>, build healthy
+            <span class="underline decoration-leaf/40">habits</span>
+          </h1>
+          <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-xl">
+            Science-backed programs for nutrition, mindfulness, and movement —
+            designed to fit your life, not the other way around.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a
+              href="#book"
+              class="inline-flex items-center justify-center rounded-xl bg-leaf px-6 py-3 text-white shadow-soft"
+              >Start Your Journey</a
+            >
+            <a
+              href="#programs"
+              class="inline-flex items-center justify-center rounded-xl bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 px-6 py-3"
+              >Explore Programs</a
+            >
+          </div>
+          <!-- Stats -->
+          <div class="mt-8 grid grid-cols-3 gap-4 max-w-md">
+            <div
+              class="text-center rounded-2xl bg-white/60 dark:bg-gray-900/40 ring-1 ring-gray-200 dark:ring-gray-800 p-4"
+            >
+              <div class="text-2xl font-semibold">50k+</div>
+              <div class="text-xs text-gray-500">Members</div>
+            </div>
+            <div
+              class="text-center rounded-2xl bg-white/60 dark:bg-gray-900/40 ring-1 ring-gray-200 dark:ring-gray-800 p-4"
+            >
+              <div class="text-2xl font-semibold">4.9★</div>
+              <div class="text-xs text-gray-500">Avg. rating</div>
+            </div>
+            <div
+              class="text-center rounded-2xl bg-white/60 dark:bg-gray-900/40 ring-1 ring-gray-200 dark:ring-gray-800 p-4"
+            >
+              <div class="text-2xl font-semibold">24/7</div>
+              <div class="text-xs text-gray-500">Coach support</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Media -->
+        <div class="reveal">
+          <div class="relative mx-auto max-w-lg">
+            <div
+              class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-mint/50 via-lavender/50 to-leaf/40 blur-2xl -z-10"
+            ></div>
+            <div class="glass rounded-[2rem] p-3 shadow-soft">
+              <img
+                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1400&auto=format&fit=crop"
+                alt="Person meditating in nature"
+                class="rounded-[1.5rem] object-cover h-[440px] w-full"
+              />
+            </div>
+            <!-- Floating badges -->
+            <div
+              class="absolute -left-6 top-6 glass rounded-2xl px-4 py-3 shadow-soft"
+            >
+              <div class="text-xs text-gray-600 dark:text-gray-300">
+                Mindfulness
+              </div>
+              <div class="font-semibold">Daily breathwork</div>
+            </div>
+            <div
+              class="absolute -right-6 bottom-8 glass rounded-2xl px-4 py-3 shadow-soft text-right"
+            >
+              <div class="text-xs text-gray-600 dark:text-gray-300">
+                Nutrition
+              </div>
+              <div class="font-semibold">Balanced meal plans</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ VALUE PROPS ================ -->
+    <section id="programs" class="py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2
+          class="reveal font-display text-3xl sm:text-4xl font-semibold text-center"
+        >
+          What You Get
+        </h2>
+        <p
+          class="reveal mt-2 text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+        >
+          Four pillars that work together to create lasting change.
+        </p>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card -->
+          <div
+            class="reveal rounded-2xl bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 p-6 shadow-soft"
+          >
+            <div class="text-3xl">🌱</div>
+            <h3 class="mt-3 font-semibold">Personalized Nutrition</h3>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              Meal plans aligned with your goals and culture.
+            </p>
+          </div>
+          <div
+            class="reveal rounded-2xl bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 p-6 shadow-soft"
+          >
+            <div class="text-3xl">🧘</div>
+            <h3 class="mt-3 font-semibold">Mindfulness & Yoga</h3>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              Guided sessions to reduce stress and improve focus.
+            </p>
+          </div>
+          <div
+            class="reveal rounded-2xl bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 p-6 shadow-soft"
+          >
+            <div class="text-3xl">🏃</div>
+            <h3 class="mt-3 font-semibold">Movement Plans</h3>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              At‑home or gym routines, tailored to your level.
+            </p>
+          </div>
+          <div
+            class="reveal rounded-2xl bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 p-6 shadow-soft"
+          >
+            <div class="text-3xl">💤</div>
+            <h3 class="mt-3 font-semibold">Sleep Coaching</h3>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              Restore your energy with better sleep cycles.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ PROGRAM HIGHLIGHTS / SHOP ================ -->
+    <section id="shop" class="py-16 bg-sand/50 dark:bg-gray-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-6">
+          <div>
+            <h2 class="reveal font-display text-3xl sm:text-4xl font-semibold">
+              Programs & Essentials
+            </h2>
+            <p class="reveal mt-1 text-gray-600 dark:text-gray-300">
+              Handpicked tools and courses to keep you consistent.
+            </p>
+          </div>
+          <a
+            href="#"
+            class="reveal hidden sm:inline-flex text-sm underline hover:opacity-80"
+            >Browse all</a
+          >
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Item -->
+          <article
+            class="reveal group rounded-2xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 shadow-soft"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=1200&auto=format&fit=crop"
+              alt="Yoga essentials"
+              class="h-52 w-full object-cover group-hover:scale-105 transition"
+            />
+            <div class="p-6">
+              <h3 class="font-semibold">30‑Day Mindful Movement</h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Daily flows + breathwork to build calm strength.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="font-semibold">$39</span>
+                <button
+                  class="rounded-xl bg-gray-900 text-white dark:bg-white dark:text-gray-900 px-3 py-2 text-sm"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </article>
+          <article
+            class="reveal group rounded-2xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 shadow-soft"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop"
+              alt="Healthy meals"
+              class="h-52 w-full object-cover group-hover:scale-105 transition"
+            />
+            <div class="p-6">
+              <h3 class="font-semibold">Personal Nutrition Blueprint</h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Culturally flexible, budget‑friendly recipes.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="font-semibold">$49</span>
+                <button
+                  class="rounded-xl bg-gray-900 text-white dark:bg-white dark:text-gray-900 px-3 py-2 text-sm"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </article>
+          <article
+            class="reveal group rounded-2xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 shadow-soft"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?q=80&w=1200&auto=format&fit=crop"
+              alt="Aromatherapy"
+              class="h-52 w-full object-cover group-hover:scale-105 transition"
+            />
+            <div class="p-6">
+              <h3 class="font-semibold">Aromatherapy Starter Kit</h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Essential oils to set the mood and unwind.
+              </p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="font-semibold">$29</span>
+                <button
+                  class="rounded-xl bg-gray-900 text-white dark:bg-white dark:text-gray-900 px-3 py-2 text-sm"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ TESTIMONIALS ================ -->
+    <section id="stories" class="py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2
+          class="reveal font-display text-3xl sm:text-4xl font-semibold text-center"
+        >
+          Real stories, real change
+        </h2>
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Testimonial card -->
+          <figure
+            class="reveal rounded-2xl ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 p-6 shadow-soft"
+          >
+            <blockquote class="text-gray-700 dark:text-gray-200">
+              “The mindful movement plan helped me build consistency without
+              burnout. I feel calmer and stronger.”
+            </blockquote>
+            <figcaption class="mt-4 flex items-center gap-3">
+              <img
+                class="h-10 w-10 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop"
+                alt="Client avatar"
+              />
+              <div>
+                <div class="font-semibold">Aisha R.</div>
+                <div class="text-xs text-gray-500">Community Manager</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure
+            class="reveal rounded-2xl ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 p-6 shadow-soft"
+          >
+            <blockquote class="text-gray-700 dark:text-gray-200">
+              “Meal plans that actually respect my cultural foods. I’m energized
+              and not starving!”
+            </blockquote>
+            <figcaption class="mt-4 flex items-center gap-3">
+              <img
+                class="h-10 w-10 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?q=80&w=400&auto=format&fit=crop"
+                alt="Client avatar"
+              />
+              <div>
+                <div class="font-semibold">Rafiq H.</div>
+                <div class="text-xs text-gray-500">Teacher</div>
+              </div>
+            </figcaption>
+          </figure>
+          <figure
+            class="reveal rounded-2xl ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 p-6 shadow-soft"
+          >
+            <blockquote class="text-gray-700 dark:text-gray-200">
+              “My sleep improved within two weeks. The gentle routines are
+              game‑changers.”
+            </blockquote>
+            <figcaption class="mt-4 flex items-center gap-3">
+              <img
+                class="h-10 w-10 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400&auto=format&fit=crop"
+                alt="Client avatar"
+              />
+              <div>
+                <div class="font-semibold">Sadia M.</div>
+                <div class="text-xs text-gray-500">Designer</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ BLOG / TIPS ================ -->
+    <section id="about" class="py-16 bg-sand/50 dark:bg-gray-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-6">
+          <div>
+            <h2 class="reveal font-display text-3xl sm:text-4xl font-semibold">
+              Fresh wellness tips
+            </h2>
+            <p class="reveal mt-1 text-gray-600 dark:text-gray-300">
+              Simple practices to feel better every day.
+            </p>
+          </div>
+          <a
+            href="#"
+            class="reveal hidden sm:inline-flex text-sm underline hover:opacity-80"
+            >View all articles</a
+          >
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article
+            class="reveal group rounded-2xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 shadow-soft"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?q=80&w=1200&auto=format&fit=crop"
+              alt="Morning ritual"
+              class="h-48 w-full object-cover group-hover:scale-105 transition"
+            />
+            <div class="p-6">
+              <h3 class="font-semibold">5‑minute morning ritual for calm</h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                A quick routine to set your day up with intention.
+              </p>
+              <a href="#" class="mt-3 inline-flex text-sm underline"
+                >Read more</a
+              >
+            </div>
+          </article>
+          <article
+            class="reveal group rounded-2xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 shadow-soft"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1467453678174-768ec283a940?q=80&w=1200&auto=format&fit=crop"
+              alt="Hydration"
+              class="h-48 w-full object-cover group-hover:scale-105 transition"
+            />
+            <div class="p-6">
+              <h3 class="font-semibold">
+                Hydration habits that actually stick
+              </h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Practical tips (and a fun tracker) you’ll want to keep.
+              </p>
+              <a href="#" class="mt-3 inline-flex text-sm underline"
+                >Read more</a
+              >
+            </div>
+          </article>
+          <article
+            class="reveal group rounded-2xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 bg-white dark:bg-gray-900 shadow-soft"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?q=80&w=1200&auto=format&fit=crop"
+              alt="Stretching"
+              class="h-48 w-full object-cover group-hover:scale-105 transition"
+            />
+            <div class="p-6">
+              <h3 class="font-semibold">Desk stretches for focus</h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                Relieve tension with three simple moves.
+              </p>
+              <a href="#" class="mt-3 inline-flex text-sm underline"
+                >Read more</a
+              >
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ NEWSLETTER ================ -->
+    <section id="book" class="py-16 relative overflow-hidden">
+      <div
+        class="absolute inset-0 -z-10 bg-gradient-to-br from-lavender via-white to-mint dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+      ></div>
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="reveal font-display text-3xl sm:text-4xl font-semibold">
+          Stay balanced. Stay inspired.
+        </h2>
+        <p class="reveal mt-2 text-gray-600 dark:text-gray-300">
+          Join 50,000+ readers getting weekly labs‑tested tips.
+        </p>
+        <form
+          class="reveal mt-6 mx-auto max-w-xl flex flex-col sm:flex-row gap-3"
+        >
+          <input
+            type="email"
+            required
+            placeholder="Enter your email"
+            class="w-full md:w-96 rounded-xl px-4 py-3 ring-1 ring-gray-300 dark:ring-gray-700 bg-white dark:bg-gray-900"
+          />
+          <button
+            class="rounded-xl bg-gray-900 text-white dark:bg-white dark:text-gray-900 px-6 py-3"
+          >
+            Join Free
+          </button>
+        </form>
+        <p class="reveal mt-2 text-xs text-gray-500">
+          No spam. Unsubscribe anytime.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================ FOOTER ================ -->
+    <footer
+      id="contact"
+      class="py-12 border-t border-gray-200 dark:border-gray-800"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-mint via-lavender to-leaf"
+              ></span>
+              <span class="font-display text-lg font-semibold">SereneWell</span>
+            </div>
+            <p class="mt-3 text-sm text-gray-600 dark:text-gray-300">
+              We combine science and soul to help you feel your best.
+            </p>
+          </div>
+          <div>
+            <div class="font-semibold">Company</div>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#about" class="hover:underline">About</a></li>
+              <li><a href="#stories" class="hover:underline">Stories</a></li>
+              <li><a href="#" class="hover:underline">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold">Resources</div>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#" class="hover:underline">Blog</a></li>
+              <li><a href="#" class="hover:underline">Guides</a></li>
+              <li><a href="#" class="hover:underline">Community</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold">Get in touch</div>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li>
+                <a href="mailto:hello@serenewell.com" class="hover:underline"
+                  >hello@serenewell.com</a
+                >
+              </li>
+              <li><a href="#" class="hover:underline">Instagram</a></li>
+              <li><a href="#" class="hover:underline">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500"
+        >
+          <p>© <span id="year"></span> SereneWell. All rights reserved.</p>
+          <div class="flex items-center gap-3">
+            <a href="#" class="hover:underline">Privacy</a>
+            <a href="#" class="hover:underline">Terms</a>
+            <a href="#" class="hover:underline">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================ SCRIPTS ================ -->
+    <script src="main.js"></script>
+  </body>
+</html>
